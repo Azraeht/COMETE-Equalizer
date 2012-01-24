@@ -1,0 +1,6 @@
+content nighingalecometeequalizer  chrome/content/
+skin    nighingalecometeequalizer  classic/1.0 chrome/skin/
+
+overlay chrome://nightingale/content/xul/mediacore/mediacoreEqualizer.xul chrome://nighingalecometeequalizer/content/equalizer.xul
+overlay chrome://equalizerpane/content/pane.xul chrome://nighingalecometeequalizer/content/equalizer.xul
+

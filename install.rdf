@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+     xmlns:nightingale="http://www.getnightingale.com/2007/addon-metadata-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>nightingalecometeequalizer</em:id>
+    <em:type>2</em:type>
+    <em:name>Equalizer Comete</em:name>
+    <em:version>0.1/em:version>
+    <em:creator>Azraeht</em:creator>
+    <em:description>Ajout de presets modifiable pour Nightingale</em:description>
+    <em:iconURL>chrome://nighingalecometeequalizer/skin/icon.png</em:iconURL>
+    <em:homepageURL>https://github.com/Azraeht/Nighingale-CoMeTe-Equalizer/wiki</em:homepageURL>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>nightingale@getnightingale.com</em:id>
+        <em:minVersion>1.4.3</em:minVersion>
+        <em:maxVersion>2.0.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+  </Description>
+</RDF>
