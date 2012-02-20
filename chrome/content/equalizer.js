@@ -10,12 +10,6 @@ cometeeq = {
 		//Vérification de l'existence du fichier de préts "cometeeq_presets.xml"
 		cometeeq.findOrCreate();
 		cometeeq.loadList();
-		var pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch2);
-		alert(pref.getCharPref("extensions.cometeeq.currentpreset"));
-		
-	
-		
-		
 	},
 	easeInOut: function(minValue,maxValue,totalSteps,actualStep,powr){ 
 		var delta = maxValue - minValue;
@@ -41,39 +35,41 @@ cometeeq = {
 		var pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch2);
 		var preset = pref.getCharPref("extensions.cometeeq.currentpreset");	
 				
-		
+		var presets = rootNode.getElementsByTagName("preset");
+		var selectedItem = null;
 		//On parcours les presets du fichier de paramétrage
-		for (var i = 0, sz = rootNode.childNodes.length; i < sz; i++)
+		for (var i = 0, sz = presets.length; i < sz; i++)
 		{
 			//création d'un nouveau menuitem à insérer
 			var opt = document.createElement('menuitem');
-			if(rootNode.childNodes[i].tagName == "preset"){
-			
-				// Création du oncommand en fonction des paramètres band du Presets
-				var node = rootNode.childNodes[i];
-				var value = "cometeeq.presets('"+rootNode.childNodes[i].getAttribute("name")+"'";
-				var bands = node.getElementsByTagName("band");
-				for(var j = 0; j< bands.length; j++){ 
-					var element = bands[j]; 
-					value += ",'"+element.firstChild.nodeValue+"'";
-				}
-				value += ")";
-				
-				//Ajout des attributs à l'élément menuItem
-				opt.setAttribute("value", rootNode.childNodes[i].getAttribute("name"));
-				opt.setAttribute("oncommand", value);
-				opt.setAttribute("label", rootNode.childNodes[i].getAttribute("name"));
-				
-				//Preset selectionné
-				if(rootNode.childNodes[i].getAttribute("name") == preset){
-					//opt.setAttribute("selected", true);
-					document.getElementById("nom_preset").value = rootNode.childNodes[i].getAttribute("name");
-				}
-				
-				//On ajoute l'item à la liste de presets
-				liste.appendChild(opt);
+			// Création du oncommand en fonction des paramètres band du Presets
+			var node = presets[i];
+			var value = "cometeeq.presets('"+presets[i].getAttribute("name")+"'";
+			var bands = node.getElementsByTagName("band");
+			for(var j = 0; j< bands.length; j++){ 
+				var element = bands[j]; 
+				value += ",'"+element.firstChild.nodeValue+"'";
 			}
+			value += ")";
+			
+			//Ajout des attributs à l'élément menuItem
+			opt.setAttribute("value", presets[i].getAttribute("name"));
+			opt.setAttribute("oncommand", value);
+			opt.setAttribute("label", presets[i].getAttribute("name"));
+						
+			//Preset selectionné
+			if(presets[i].getAttribute("name") == preset){
+				//opt.setAttribute("selected", true);
+				//alert(preset);
+				selectedItem = i;
+				document.getElementById("nom_preset").value = presets[i].getAttribute("name");
+			}
+			
+			//On ajoute l'item à la liste de presets
+			liste.appendChild(opt);
+			
 		}
+		liste.parentNode.selectedIndex = selectedItem;
 	
 	},
 	findOrCreate: function(){
@@ -205,8 +201,8 @@ cometeeq = {
 		return data;
 	},
 	presets: function(eqpreset,band0,band1,band2,band3,band4,band5,band6,band7,band8,band9) {
-      this.mm = 
-          Components.classes["@getnightingale.com/Nightingale/Mediacore/Manager;1"]
+		this.mm = 
+			Components.classes["@getnightingale.com/Nightingale/Mediacore/Manager;1"]
                     .getService(Components.interfaces.sbIMediacoreManager);
 		
   	var pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch2);
