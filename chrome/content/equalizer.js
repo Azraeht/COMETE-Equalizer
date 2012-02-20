@@ -179,14 +179,14 @@ cometeeq = {
 		return presets;
 	},
 	createXMLString: function(presets){
-		var datas = "<presets>\n";
+		var datas = "<presets>";
 		for(preset in presets){
-			datas +="<preset name='"+preset+"'>\n";
+			datas +="<preset name='"+preset+"'>";
 			var tab = presets[preset];
 			for(var i = 0, sz = tab.length; i < sz; i++){
-				datas +="<band>"+tab[i]+"</band>\n";
+				datas +="<band>"+tab[i]+"</band>";
 			}
-			datas+="</preset>\n";
+			datas+="</preset>";
 		}
 		datas+="</presets>";
 		return datas;
