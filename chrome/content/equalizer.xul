@@ -3,7 +3,7 @@
 <overlay id="equalizer" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
     <preferences>
-		<preference id="currentpreset" name="extensions.eqprefs.currentpreset" type="string"/>
+		<preference id="currentpreset" name="extensions.cometeeq.currentpreset" type="string"/>
     </preferences>
 
 	<hbox>
