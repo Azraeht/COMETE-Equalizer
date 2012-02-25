@@ -11,6 +11,7 @@
 		<textbox id="nom_preset" width="75px"/>
 		<button id="Save" label="Save" oncommand="cometeeq.savePreset()"/>
 		<button id="Save" label="Delete" oncommand="cometeeq.deletePreset()"/>
+		<button id="Save" label="Restore" oncommand="cometeeq.restorePreset()"/>
 	</hbox>
 	
 

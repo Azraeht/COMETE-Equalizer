@@ -7,6 +7,7 @@ cometeeq = {
 	onLoad: function() {
 		var equalizer = document.getElementById("equalizer");
 		equalizer.setAttribute("height","250");
+		equalizer.setAttribute("width","325");
 		//Vérification de l'existence du fichier de préts "cometeeq_presets.xml"
 		cometeeq.findOrCreate();
 		cometeeq.loadList();
@@ -331,7 +332,7 @@ var data = "Winamp EQ library file v1.1!--Entry1";
 				rootNode.insertBefore(presetDOM,oldy);
 				//rootNode.appendChild(presetDOM);
 				
-				alert("Preset Enregistré!");
+				alert("Preset saved!");
 				
 				//Sauver fichier
 				cometeeq.saveXMLDocument(xmlDoc,path);
@@ -353,7 +354,7 @@ var data = "Winamp EQ library file v1.1!--Entry1";
 				}
 				rootNode.replaceChild(presetDOM,oldy);
 				
-				alert("Préset modifié!");
+				alert("Preset modified!");
 				
 				//Sauver fichier
 				cometeeq.saveXMLDocument(xmlDoc,path);
@@ -364,7 +365,7 @@ var data = "Winamp EQ library file v1.1!--Entry1";
 				cometeeq.loadList();
 			}
 		}else{
-			alert("Spécifiez un nom de preset");
+			alert("Preset name missing!");
 			
 		}
 	},
@@ -389,9 +390,35 @@ var data = "Winamp EQ library file v1.1!--Entry1";
 			cometeeq.saveXMLDocument(xmlDoc,path);
 			cometeeq.loadList();
 			document.getElementById("nom_preset").value="";
-			alert("Preset '"+preset+"' supprimé!");
+			alert("Preset '"+preset+"' deleted!");
 		}else{
-			alert("Preset '"+preset+"' non supprimé!");
+			alert("Preset '"+preset+"' undeleted for unknown reason!");
+		}
+	},
+	restorePreset: function(){
+		if(confirm("Restore presets?")){
+			var path = cometeeq.getFilePathInProfile("cometeeq_presets.xml");
+			
+				
+			//Ecriture du fichier de paramètres
+			var presets = cometeeq.getDefaultPresets();
+				
+			// creation d'un parser DOM,
+			var parser = Components.classes["@mozilla.org/xmlextras/domparser;1"]
+						.createInstance(Components.interfaces.nsIDOMParser);
+				
+			// création du contenu du fichier
+			var datas = cometeeq.createXMLString(presets);
+			
+			//On crée le document DOM
+			var DOMDoc = parser.parseFromString(datas,"text/xml");
+				
+			//On l'enregistre dans ProfD
+			cometeeq.saveXMLDocument(DOMDoc,path);
+			
+			//On recharge la liste
+			cometeeq.loadList();
+		
 		}
 	},
 };
