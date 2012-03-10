@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE window SYSTEM "chrome://nightingale/locale/nightingale.dtd">
+<!DOCTYPE window SYSTEM "chrome://cometeeq/locale/overlay.dtd">
+<!--<!DOCTYPE window SYSTEM "chrome://nightingale/locale/nightingale.dtd">-->
+
 <overlay id="equalizer" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
     <preferences>
 		<preference id="currentpreset" name="extensions.cometeeq.currentpreset" type="string"/>
     </preferences>
-
+	
+	<stringbundle id="messages" src="../locale/messages.properties"/>
+	
 	<hbox>
 		<label value="Nom :"/>
 		<textbox id="nom_preset" width="75px"/>
-		<button id="Save" label="Save" oncommand="cometeeq.savePreset()"/>
-		<button id="Save" label="Delete" oncommand="cometeeq.deletePreset()"/>
-		<button id="Save" label="Restore" oncommand="cometeeq.restorePreset()"/>
+		<button id="Save" label="&Save;" oncommand="cometeeq.savePreset()"/>
+		<button id="Save" label="&Delete;" oncommand="cometeeq.deletePreset()"/>
+		<button id="Save" label="&Restore;" oncommand="cometeeq.restorePreset()"/>
 	</hbox>
 	
 
-	<menulist preference="currentpreset" label="Presets" width="80">
+	<menulist preference="currentpreset" label="&Presets;" width="80">
 		<menupopup id="presets">
 		</menupopup>
     </menulist>

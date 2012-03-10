@@ -1,4 +1,9 @@
 <!ENTITY cometeeq.helloworld.label "Do HelloWorld">
 <!ENTITY cometeeq.helloworld.accesskey "H">
 
+<!ENTITY Save "Save">
+<!ENTITY Delete "Delete">
+<!ENTITY Restore "Restore">
+<!ENTITY Presets "Presets">
+
 
